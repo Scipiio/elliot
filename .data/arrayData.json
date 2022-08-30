@@ -1,0 +1,70 @@
+{
+"selectedSources": ["BFMTV","Frandroid","Francetvinfo.fr","L'Indépendant","20 Minutes","Le Monde"],
+"selectedWeather": ["Strasbourg, FR","Nancy, FR","Metz, FR","Lyon, FR","La Rochelle, FR","Toulon, FR","Saint-Jean-Bonnefonds, FR","Pettoncourt, FR"],
+"skynameTranspose": [{
+		"name": "Thunderstorm",
+		"emoji": ":cloud_lightning:"
+	},{
+		"name": "Cloudy",
+		"emoji": ":cloud:"
+	},{
+		"name": "Mostly Cloudy",
+		"emoji": ":white_sun_cloud:"
+	},{
+		"name": "Sunny",
+		"emoji": ":sunny:"
+	},{
+		"name": "Rain",
+		"emoji": ":cloud_rain:"
+	},{
+		"name": "Rain Showers",
+		"emoji": ":cloud_rain:"
+	},{
+		"name": "Clear",
+		"emoji": ":white_sun_small_cloud:"
+	},{
+		"name": "Light Rain",
+		"emoji": ":cloud_rain:"
+	},{
+		"name": "Snow",
+		"emoji": ":cloud_snow:"
+	},{
+		"name": "Light Snow",
+		"emoji": ":cloud_snow:"
+	},{
+		"name": "Mostly Sunny",
+		"emoji": ":white_sun_small_cloud:"
+	}],
+"introArray": ["Bien le bonjour.",
+				"Bien le bonjour à vous.",
+				"Mesdames, Messieurs.",
+				"Bonjour à toutes et à tous.",
+				"Bonjour à vous.",
+				"Bonjour messieurs-dames."],
+
+"sentenceArray": ["J'espère que vous avez passez une agréable nuit.",
+				"Votre réveil s'est-il bien passé ?",
+				"Aujourd'hui sera une journée riche, j'en suis persuadé.",
+				"Votre majordome toujours à votre disposition.",
+				"Si je le pouvais, je vous servirais volontier votre petit-déjeuner. Hélas, je ne suis qu'un chat bot.",
+				"N'oubliez pas certaines commandes de mes comparses bot, autre que Lovy bien entendu.",
+				"Avez-vous bien dormi ? Pour ma part, j'ai plus 'veillé' que dormi, mais c'est équivalent à une bonne nuit de sommeil.",
+				"Pensez à ne pas vous coucher trop tard, l'avenir appartient à ceux qui se lève tôt.",
+				"Ces messages sont autogénérés, peut-être que certains vont revenir en boucle.",
+				"J'ai pu dépoussierer quelques babioles dans les salons textuels abandonnés, ils en avaient bien besoin.",
+				"Ce serveur est très grand, nettoyer cette endroit est fastidieux mais necessaire.",
+				"N'hésitez pas à contacter mon Maître s'il y a une faute dans mes messages générés.",
+				"Debout les campeurs et haut les coeurs, n'oubliez pas vos bottes parce que ça caille aujourd'hui. Ça caille tous les jours par ici, on n'est pas à Miami.",
+				"Pensez-vous que Scipio est mégalomane ? Personnellement je ne pense pas.",
+				"Votre majordome vous apporte votre petit-déjeuner.",
+				"Elliot, pour vous servir chaque matin.",
+				"Thé, café, chocolat chaud pour ces Messieurs-Dames ce matin ?"],
+
+"presentationArray": ["Tout de suite, les dernières informations et la météo du jour.",
+				"Voici les dernières nouvelles du moment.",
+				"Votre bulletin quotidien :",
+				"Les dernières information, en vous souhaitant une agréable journée.",
+				"Les gros titres faisant la une des journeaux sont les suivants :",
+				"Voici le bulletin météo reçu de la dernière heure :",
+				"Les dernières informations, et prenez soin de vous !"]
+}
