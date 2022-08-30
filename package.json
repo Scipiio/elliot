@@ -1,4 +1,5 @@
 {
+  "main": "elliot.js",
   "dependencies": {
     "cluster": "^0.7.7",
     "discord.js": "^14.3.0",
