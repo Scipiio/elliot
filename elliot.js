@@ -115,7 +115,7 @@ if(cluster.isMaster) {
 	});
 
 
-	const dailySend = schedule.scheduleJob('* 8 * * *', async function(){
+	const dailySend = schedule.scheduleJob('0 8 * * *', async function(){
 		let msg = await createEmbed(true);
 		MAIN_MESSAGE = await sendReport(msg);
 		save();
