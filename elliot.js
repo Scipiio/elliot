@@ -96,7 +96,7 @@ if(cluster.isMaster) {
 
 
 	client.once('ready', () => {
-		console.log('Ready!');
+		console.log('Bot started     ||');
 
 		load()
 	});
