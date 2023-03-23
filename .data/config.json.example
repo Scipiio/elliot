@@ -2,5 +2,7 @@
 	"clientId": "",
 	"guildId": "",
 	"token": "",
-	"tokenAPI": ""
+	"NewsAPItoken": "",
+	"weatherAPItoken": "",
+	"openAItoken": ""
 }

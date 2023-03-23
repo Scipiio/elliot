@@ -11,11 +11,16 @@ const { ActionRowBuilder,
 		Client, 
 		AttachmentBuilder,
 		GatewayIntentBits } = require('discord.js');
-const { token,tokenAPI,weatherAPI } = require('./.data/config.json');
+const { token,NewsAPItoken,weatherAPItoken,openAItoken } = require('./.data/config.json');
 
 // API classes
-const NewsAPI = require('newsapi');
 process.env.TZ = 'Europe/Paris'
+const NewsAPI = require('newsapi');
+const { Configuration, OpenAIApi } = require("openai");
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
 
 // Utils classes
 const fs = require('fs');
@@ -63,7 +68,7 @@ if(cluster.isMaster) {
 } else {
 
 	const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-	const newsapi = new NewsAPI(tokenAPI);
+	const newsapi = new NewsAPI(NewsAPItoken);
 	const channelAnnouncement = '307260668388573186';
 	//const channelAnnouncement = '307870793688416256'; // TEST
 
@@ -86,10 +91,35 @@ if(cluster.isMaster) {
 
 	client.once('ready', () => {
 		console.log('Bot started     ||');
-		requestNews()
-		load()
+		load();
 	});
 
+	client.on('messageCreate', async message => {
+	  console.log(message)
+	  if (message.author.bot === false && message.content.startsWith('<@543525459577536514> ')) {
+	    try {
+	      const question = message.content.substring(22);
+	      console.log(`Asking ${question}`)
+
+	      const response = await openai.createCompletion({
+	        model: "text-davinci-003",
+	        prompt: question,
+	        max_tokens: 2048,
+	        temperature: 0.8
+	      });
+
+	      message.channel.send(response.data.choices[0].text);
+	    } catch (error) {
+	      if (error.response) {
+	        console.log(error.response.status);
+	        console.log(error.response.data);
+	      } else {
+	        console.log(error.message);
+	      }
+	    }
+	    
+	  }
+	});
 	
 	client.on('interactionCreate', async interaction => {
 		if (!interaction.isChatInputCommand()) return;
@@ -162,7 +192,7 @@ if(cluster.isMaster) {
 
 	function promiseWeather(location) {
 		return new Promise(function fetchWeather(resolve, reject) {
-			fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + location.lat + '&lon=' + location.lon + '&appid=' + weatherAPI).then(resp => resp.json())
+			fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + location.lat + '&lon=' + location.lon + '&appid=' + weatherAPItoken).then(resp => resp.json())
   			.then((data) => {
 				resolve([(data.main.temp - 273.16).toFixed(2), data.weather[0].main, location.name]);
 			});	
