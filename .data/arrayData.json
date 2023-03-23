@@ -1,11 +1,48 @@
 {
-"selectedSources": ["BFMTV","Frandroid","Francetvinfo.fr","L'Indépendant","20 Minutes","Le Monde"],
-"selectedWeather": ["Strasbourg, FR","Nancy, FR","Metz, FR","Lyon, FR","La Rochelle, FR","Toulon, FR","Saint-Jean-Bonnefonds, FR","Pettoncourt, FR"],
+"selectedSources": ["BFMTV","Frandroid","Francetvinfo.fr","L'Indépendant","20 Minutes","Le Monde","Google News"],
+"selectedWeather": [
+	{
+		"name":"Strasbourg",
+		"lat":"48.58",
+		"lon":"7.74"
+	},{
+		"name":"Nancy",
+		"lat":"48.69",
+		"lon":"6.17"
+	},{
+		"name":"Metz",
+		"lat":"49.11",
+		"lon":"6.19"
+	},{
+		"name":"La Rochelle",
+		"lat":"46.15",
+		"lon":"-1.16"
+	},{
+		"name":"Toulon",
+		"lat":"43.13",
+		"lon":"5.93"
+	},{
+		"name":"Saint-Jean-Bonnefonds",
+		"lat":"45.45",
+		"lon":"4.44"
+	},{
+		"name":"Pettoncourt",
+		"lat":"48.78",
+		"lon":"6.40"
+	},{
+		"name":"Rioux",
+		"lat":"45.63",
+		"lon":"-0.71"
+	},{
+		"name":"Flers",
+		"lat":"48.74",
+		"lon":"-0.56"
+	}],
 "skynameTranspose": [{
 		"name": "Thunderstorm",
 		"emoji": ":cloud_lightning:"
 	},{
-		"name": "Cloudy",
+		"name": "Clouds",
 		"emoji": ":cloud:"
 	},{
 		"name": "Mostly Cloudy",

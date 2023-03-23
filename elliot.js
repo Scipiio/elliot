@@ -11,15 +11,15 @@ const { ActionRowBuilder,
 		Client, 
 		AttachmentBuilder,
 		GatewayIntentBits } = require('discord.js');
-const { token,tokenAPI } = require('./.data/config.json');
+const { token,tokenAPI,weatherAPI } = require('./.data/config.json');
 
 // API classes
-const weather = require('weather-js');
 const NewsAPI = require('newsapi');
 process.env.TZ = 'Europe/Paris'
 
 // Utils classes
 const fs = require('fs');
+const fetch = require('node-fetch');
 const stringify = require('json-stringify-safe')
 const cluster = require('cluster');
 const schedule = require('node-schedule');
@@ -84,20 +84,9 @@ if(cluster.isMaster) {
 		});
 	});
 
-/*
-	let selectedSources
-	let selectedWeather
-	let skynameTranspose.name
-	let skynameTranspose.emoji
-	let introArray 
-	let sentenceArray 
-	let presentationArray 
-*/
-
-
 	client.once('ready', () => {
 		console.log('Bot started     ||');
-
+		requestNews()
 		load()
 	});
 
@@ -121,7 +110,7 @@ if(cluster.isMaster) {
 		save();
 	});
 
-	const updateWeather = schedule.scheduleJob('10,30,50 8-20 * * *', async function(){
+	const updateWeather = schedule.scheduleJob('0 9-19 * * *', async function(){
 		let msg = await createEmbed(false);
 		editMSG = await client.channels.cache.get(channelAnnouncement).messages.fetch(MAIN_MESSAGE.id);
 		editMSG.edit(msg);
@@ -165,9 +154,6 @@ if(cluster.isMaster) {
 						//console.log(newsArray)
 						newsArray.push(article);
 					}
-					/*if(itemsProcessed === newsReport.articles.length) {
-						resolve(newsArray);
-					}*/
 				})
 				resolve(newsArray);
 			});
@@ -176,18 +162,9 @@ if(cluster.isMaster) {
 
 	function promiseWeather(location) {
 		return new Promise(function fetchWeather(resolve, reject) {
-			weather.find({search: location, degreeType: 'C'}, (err, result) => {
-			if(err) {
-				console.log(err);
-				fetchWeather(resolve, reject);
-				return;
-			}
-
-			console.log('Researching weather: ' + location)
-			//console.log(result)
-
-			let city = location.split(', ');
-			resolve([result[0].current.temperature, result[0].current.skytext, city[0]]);
+			fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + location.lat + '&lon=' + location.lon + '&appid=' + weatherAPI).then(resp => resp.json())
+  			.then((data) => {
+				resolve([(data.main.temp - 273.16).toFixed(2), data.weather[0].main, location.name]);
 			});	
 		});
 	}
